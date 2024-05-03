@@ -8,7 +8,8 @@ import {
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { faBars, faHamburger } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { useSidenavState } from "../context/SidenavContext";
 
 const StyledSidebar = styled.div`
   height: 100vh;
@@ -18,6 +19,7 @@ const StyledSidebar = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   position: fixed;
+  z-index: 10;
 `;
 
 const StyledHamburgerIcon = styled.div`
@@ -57,9 +59,11 @@ const StyledYear = styled.div`
 `;
 
 const Sidebar = () => {
+  const { toggleSidenav } = useSidenavState();
+
   return (
     <StyledSidebar>
-      <StyledHamburgerIcon>
+      <StyledHamburgerIcon onClick={toggleSidenav}>
         <FontAwesomeIcon icon={faBars} />
       </StyledHamburgerIcon>
 
