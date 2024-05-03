@@ -32,6 +32,37 @@ const SidenavList = styled.ul`
   gap: 1.5rem;
 `;
 
+const SidenavListItem = styled.li`
+  font-size: 1.3rem;
+  position: relative;
+  color: #deaa86;
+  &::after {
+    content: "";
+    width: 0;
+    height: 1px;
+    background-color: #deaa86;
+    position: absolute;
+    top: 0.85rem;
+    right: -2rem;
+    transition: width 0.5s;
+  }
+  &::before {
+    content: "";
+    width: 0;
+    height: 1px;
+    background-color: #deaa86;
+    position: absolute;
+    top: 0.85rem;
+    left: -2rem;
+    transition: width 0.5s;
+  }
+  &:hover::after,
+  &:hover::before {
+    width: 1.5rem;
+    background-color: #deaa86;
+  }
+`;
+
 const Sidenav = () => {
   const value = useSidenavState();
 
