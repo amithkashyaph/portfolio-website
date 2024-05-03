@@ -19,7 +19,7 @@ const StyledSidebar = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   position: fixed;
-  z-index: 10;
+  z-index: 11;
 `;
 
 const StyledHamburgerIcon = styled.div`
