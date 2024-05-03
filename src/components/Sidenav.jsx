@@ -22,6 +22,16 @@ const SidenavHeading = styled.h1`
   font-size: xx-large;
 `;
 
+const SidenavList = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 84%;
+  gap: 1.5rem;
+`;
+
 const Sidenav = () => {
   const value = useSidenavState();
 
