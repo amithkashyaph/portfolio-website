@@ -12,6 +12,7 @@ const StyledSidenav = styled.nav`
   position: fixed;
   display: flex;
   flex-direction: column;
+  z-index: 10;
 `;
 
 const SidenavHeading = styled.h1`
