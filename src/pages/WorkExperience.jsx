@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { workExperience } from "../data/workExperience";
 import Accordion from "../components/Accordion";
@@ -16,12 +16,19 @@ const ExperinceHeader = styled.h1`
 `;
 
 const WorkExperience = () => {
+  const [activeTab, setActiveTab] = useState(-1);
   return (
     <>
       <ExperinceHeader>Work Experience</ExperinceHeader>
       <AccordionContainer>
-        {workExperience.map((experience) => (
-          <Accordion experience={experience} />
+        {workExperience.map((experience, index) => (
+          <Accordion
+            experience={experience}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            key={index}
+            position={index + 1}
+          />
         ))}
       </AccordionContainer>
     </>
