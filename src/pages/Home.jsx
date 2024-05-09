@@ -5,7 +5,7 @@ const StyledHome = styled.div`
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-image: linear-gradient(to top, grey, #181818);
+  background-image: linear-gradient(to top, #000041, #181818);
   left: 5rem;
 `;
 
