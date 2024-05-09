@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import Sidenav from "./components/Sidenav";
 import { SidenavContextProvider } from "./context/SidenavContext";
 import Home from "./pages/Home";
+import WorkExperience from "./pages/WorkExperience";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Sidebar />
         <Sidenav />
         <Home />
+        <WorkExperience />
       </SidenavContextProvider>
     </>
   );
