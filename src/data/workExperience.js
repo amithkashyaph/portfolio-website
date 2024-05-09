@@ -1,4 +1,4 @@
-const workExperience = [
+export const workExperience = [
   {
     companyName: "Vimeo",
     companyLogo: "",
