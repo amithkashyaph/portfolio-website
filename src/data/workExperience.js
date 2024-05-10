@@ -25,8 +25,12 @@ export const workExperience = [
     companyName: "PayPal",
     companyLogo: "/paypal.png",
     designation: "Software Engineer I",
-    startDate: "Oct 2020",
-    endDate: "July 2023",
-    highlights: [],
+    startDate: "June 2016",
+    endDate: "July 2017",
+    highlights: [
+      "Developed orchestrating layers with mid-tier services using Java and Spring Boot framework, delivered multiple critical features and bug fixes within the existing application",
+      "Migrated 80+ APIs from a legacy in-house framework to a new stack while upgrading the base versions of Java, SpringBoot and other dependencies. Wrote Unit Tests using JUnit and Mockito for the newly migrated services",
+      "Supported and managed deployments of components in multiple data centers across the globe, monitored the performance of critical applications and provided technical support whenever required.",
+    ],
   },
 ];
