@@ -47,13 +47,14 @@ const StyledIntroDescription = styled.p`
 `;
 
 const StyledImage = styled.img`
-  width: 30%;
+  width: 20%;
   border-radius: 1rem;
   opacity: 0.8;
   transition: opacity 0.2s;
   &:hover {
     opacity: 0.9;
   }
+  height: auto;
 `;
 
 const Home = () => {
