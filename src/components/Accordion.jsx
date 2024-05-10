@@ -5,27 +5,20 @@ import styled from "styled-components";
 
 const StyledAccordion = styled.div`
   width: 70%;
-
-  margin: 1rem auto;
-`;
-const AccordionHeader = styled.div`
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 1rem;
+  margin: 1rem auto;
+  transition: display 1s;
+`;
+const AccordionHeader = styled.div`
   display: grid;
-  /* justify-content: space-between;
-    align-items: center; */
+  align-items: center;
   grid-template-columns: repeat(2, 1fr);
   justify-content: space-between;
 `;
 
 const CompanyData = styled.div`
-  /* display: flex;
-    align-items: center;
-    justify-content: left;
-    padding: 1rem;
-    gap: 0.8rem;
-    height: 5rem; */
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   column-gap: 1rem;
@@ -35,7 +28,7 @@ const CompanyData = styled.div`
 `;
 const CompanyLogo = styled.img`
   grid-column: 1 / 2;
-  width: 100%;
+  width: 90%;
   padding: 0;
   margin: 0;
 `;
@@ -45,8 +38,9 @@ const CompanyName = styled.h2`
 `;
 
 const Designation = styled.h3`
-  grid-column: 3 / 6;
-  font-size: medium;
+  grid-column: 2 / 6;
+  font-size: large;
+  justify-self: left;
   span {
     font-size: small;
   }
@@ -65,11 +59,12 @@ const StyledChevron = styled.div`
 
 const AccordionContent = styled.div`
   font-size: 1rem;
-  padding: 1rem;
-  height: ${(props) => (props.activeTab === props.position ? "auto" : "0")};
+  padding: 1.5rem;
+  width: 95%;
   display: ${(props) =>
     props.activeTab === props.position ? "block" : "none"};
-  transition: all 10s;
+  border-top: 1px solid lightgray;
+  margin: 1rem auto;
 `;
 
 const Accordion = ({ experience, activeTab, setActiveTab, position }) => {
@@ -78,7 +73,6 @@ const Accordion = ({ experience, activeTab, setActiveTab, position }) => {
       <AccordionHeader onClick={() => setActiveTab(position)}>
         <CompanyData>
           <CompanyLogo src={experience?.companyLogo} />
-          <CompanyName>{experience?.companyName}</CompanyName>
           <Designation>
             {experience.designation}{" "}
             <span>
