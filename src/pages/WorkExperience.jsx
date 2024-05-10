@@ -16,7 +16,11 @@ const ExperinceHeader = styled.h1`
 `;
 
 const WorkExperience = () => {
-  const [activeTab, setActiveTab] = useState(-1);
+  const [activeTab, setActiveTab] = useState(null);
+
+  const handleItemClick = (index) => {
+    setActiveTab((prevIndex) => (prevIndex === index ? null : index));
+  };
   return (
     <>
       <ExperinceHeader>Work Experience</ExperinceHeader>
@@ -25,9 +29,9 @@ const WorkExperience = () => {
           <Accordion
             experience={experience}
             activeTab={activeTab}
-            setActiveTab={setActiveTab}
+            onClick={() => handleItemClick(index)}
             key={index}
-            position={index + 1}
+            position={index}
           />
         ))}
       </AccordionContainer>
