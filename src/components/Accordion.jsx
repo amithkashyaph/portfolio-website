@@ -1,7 +1,7 @@
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import styled from "styled-components";
+import React, { useRef } from "react";
+import styled, { css } from "styled-components";
 
 const StyledAccordion = styled.div`
   width: 70%;
@@ -9,7 +9,6 @@ const StyledAccordion = styled.div`
   border-radius: 10px;
   padding: 1rem;
   margin: 1rem auto;
-  transition: display 1s;
 `;
 const AccordionHeader = styled.div`
   display: grid;
@@ -57,20 +56,41 @@ const StyledChevron = styled.div`
   transition: all 0.5s;
 `;
 
-const AccordionContent = styled.div`
+const AccordionBody = styled.div`
   font-size: 1rem;
-  padding: 1.5rem;
   width: 95%;
-  display: ${(props) =>
-    props.activeTab === props.position ? "block" : "none"};
-  border-top: 1px solid lightgray;
-  margin: 1rem auto;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.7s;
+  ${({ isOpen, bodyHeight }) =>
+    isOpen &&
+    css`
+      height: ${bodyHeight}px;
+    `}
 `;
 
-const Accordion = ({ experience, activeTab, setActiveTab, position }) => {
+const AccordionContent = styled.div`
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem;
+  border-top: 1px solid lightgray;
+`;
+
+const Accordion = ({ experience, activeTab, onClick, position }) => {
+  const contentRef = useRef(null);
+  console.log("activeTab : ", activeTab);
+  console.log("height : ", contentRef?.current?.scrollHeight);
   return (
     <StyledAccordion>
-      <AccordionHeader onClick={() => setActiveTab(position)}>
+      <AccordionHeader
+        onClick={() => {
+          onClick();
+          console.log(
+            "contentRef.current.scrollHeight : ",
+            contentRef.current.scrollHeight
+          );
+        }}
+      >
         <CompanyData>
           <CompanyLogo src={experience?.companyLogo} />
           <Designation>
@@ -85,12 +105,18 @@ const Accordion = ({ experience, activeTab, setActiveTab, position }) => {
         </StyledChevron>
       </AccordionHeader>
 
-      <AccordionContent activeTab={activeTab} position={position}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, vero.
-        Cum id hic qui repellat blanditiis delectus laboriosam rerum quis
-        exercitationem minima, repudiandae corporis voluptatum, a ipsam
-        voluptas, veritatis vitae.
-      </AccordionContent>
+      <AccordionBody
+        ref={contentRef}
+        isOpen={activeTab === position || !activeTab}
+        bodyHeight={contentRef?.current?.scrollHeight}
+      >
+        <AccordionContent>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit,
+          vero. Cum id hic qui repellat blanditiis delectus laboriosam rerum
+          quis exercitationem minima, repudiandae corporis voluptatum, a ipsam
+          voluptas, veritatis vitae.
+        </AccordionContent>
+      </AccordionBody>
     </StyledAccordion>
   );
 };
