@@ -51,8 +51,7 @@ const StyledChevron = styled.div`
   padding: 1rem;
   transform: rotate(0deg);
   justify-self: end;
-  transform: ${(props) =>
-    props.activeTab === props.position ? `rotate(180deg)` : ""};
+  transform: ${({ isOpen }) => (isOpen ? `rotate(180deg)` : "")};
   transition: all 0.5s;
 `;
 
@@ -76,19 +75,13 @@ const AccordionContent = styled.div`
   border-top: 1px solid lightgray;
 `;
 
-const Accordion = ({ experience, activeTab, onClick, position }) => {
+const Accordion = ({ experience, activeTab, onClick, position, isOpen }) => {
   const contentRef = useRef(null);
-  console.log("activeTab : ", activeTab);
-  console.log("height : ", contentRef?.current?.scrollHeight);
   return (
     <StyledAccordion>
       <AccordionHeader
         onClick={() => {
           onClick();
-          console.log(
-            "contentRef.current.scrollHeight : ",
-            contentRef.current.scrollHeight
-          );
         }}
       >
         <CompanyData>
@@ -100,14 +93,14 @@ const Accordion = ({ experience, activeTab, onClick, position }) => {
             </span>
           </Designation>
         </CompanyData>
-        <StyledChevron activeTab={activeTab} position={position}>
+        <StyledChevron isOpen={isOpen}>
           <FontAwesomeIcon icon={faChevronDown} />
         </StyledChevron>
       </AccordionHeader>
 
       <AccordionBody
         ref={contentRef}
-        isOpen={activeTab === position || !activeTab}
+        isOpen={isOpen}
         bodyHeight={contentRef?.current?.scrollHeight}
       >
         <AccordionContent>
