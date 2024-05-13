@@ -19,7 +19,7 @@ const WorkExperience = () => {
   const [activeTab, setActiveTab] = useState(null);
 
   const handleItemClick = (index) => {
-    setActiveTab((prevIndex) => (prevIndex === index ? null : index));
+    setActiveTab((prevIndex) => (prevIndex === index ? -1 : index));
   };
   return (
     <>
@@ -32,6 +32,7 @@ const WorkExperience = () => {
             onClick={() => handleItemClick(index)}
             key={index}
             position={index}
+            isOpen={activeTab === null ? true : activeTab === index}
           />
         ))}
       </AccordionContainer>
