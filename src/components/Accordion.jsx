@@ -13,21 +13,22 @@ const StyledAccordion = styled.div`
 const AccordionHeader = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   justify-content: space-between;
 `;
 
 const CompanyData = styled.div`
+  grid-column: 1 / 10;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   column-gap: 1rem;
   align-items: center;
   justify-content: left;
   padding: 0.5rem;
 `;
 const CompanyLogo = styled.img`
-  grid-column: 1 / 2;
-  width: 90%;
+  grid-column: 1 / 3;
+  width: 60%;
   padding: 0;
   margin: 0;
 `;
@@ -37,7 +38,7 @@ const CompanyName = styled.h2`
 `;
 
 const Designation = styled.h3`
-  grid-column: 2 / 6;
+  grid-column: 3 / 9;
   font-size: large;
   justify-self: left;
   span {
@@ -53,6 +54,7 @@ const StyledChevron = styled.div`
   justify-self: end;
   transform: ${({ isOpen }) => (isOpen ? `rotate(180deg)` : "")};
   transition: all 0.5s;
+  grid-column: 10 / 11;
 `;
 
 const AccordionBody = styled.div`
@@ -69,14 +71,26 @@ const AccordionBody = styled.div`
 `;
 
 const AccordionContent = styled.div`
-  text-align: center;
+  text-align: justify;
   padding: 1rem;
   margin: 1rem;
   border-top: 1px solid lightgray;
 `;
 
+const Highlights = styled.ul`
+  list-style: none;
+  padding: 1rem 0;
+`;
+
+const Highlight = styled.li`
+  letter-spacing: 1.1px;
+  margin: 1rem 0;
+`;
+
 const Accordion = ({ experience, activeTab, onClick, position, isOpen }) => {
   const contentRef = useRef(null);
+  const { companyLogo, designation, startDate, endDate, highlights } =
+    experience;
   return (
     <StyledAccordion>
       <AccordionHeader
@@ -85,11 +99,11 @@ const Accordion = ({ experience, activeTab, onClick, position, isOpen }) => {
         }}
       >
         <CompanyData>
-          <CompanyLogo src={experience?.companyLogo} />
+          <CompanyLogo src={companyLogo} />
           <Designation>
-            {experience.designation}{" "}
+            {designation}{" "}
             <span>
-              ({experience.startDate}-{experience.endDate})
+              ({startDate}-{endDate})
             </span>
           </Designation>
         </CompanyData>
@@ -104,10 +118,16 @@ const Accordion = ({ experience, activeTab, onClick, position, isOpen }) => {
         bodyHeight={contentRef?.current?.scrollHeight}
       >
         <AccordionContent>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit,
-          vero. Cum id hic qui repellat blanditiis delectus laboriosam rerum
-          quis exercitationem minima, repudiandae corporis voluptatum, a ipsam
-          voluptas, veritatis vitae.
+          <Highlights>
+            {highlights.map((highlight, i) => {
+              return (
+                <Highlight
+                  key={i}
+                  dangerouslySetInnerHTML={{ __html: highlight }}
+                ></Highlight>
+              );
+            })}
+          </Highlights>
         </AccordionContent>
       </AccordionBody>
     </StyledAccordion>
