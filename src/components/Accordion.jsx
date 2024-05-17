@@ -12,9 +12,8 @@ const StyledAccordion = styled.div`
 `;
 const AccordionHeader = styled.div`
   display: grid;
-  align-items: center;
   grid-template-columns: repeat(10, 1fr);
-  justify-content: space-between;
+  align-items: center;
 `;
 
 const CompanyData = styled.div`
@@ -27,19 +26,21 @@ const CompanyData = styled.div`
   padding: 0.5rem;
 `;
 const CompanyLogo = styled.img`
-  grid-column: 1 / 3;
-  width: 60%;
+  grid-column: 1 / 2;
+  width: 100%;
   padding: 0;
   margin: 0;
 `;
 
 const Designation = styled.h3`
-  grid-column: 3 / 9;
-  font-size: large;
+  grid-column: 2 / 9;
+  font-size: 20px;
   justify-self: left;
-  span {
-    font-size: small;
-  }
+`;
+
+const TenureDate = styled.h5`
+  font-size: small;
+  display: inline-block;
 `;
 
 const StyledChevron = styled.div`
@@ -56,7 +57,7 @@ const StyledChevron = styled.div`
 const AccordionBody = styled.div`
   font-size: 1rem;
   width: 95%;
-  height: 0;
+  height: ${({ isOpen }) => (isOpen ? "auto" : 0)};
   overflow: hidden;
   transition: all 0.7s;
   ${({ isOpen, bodyHeight }) =>
@@ -98,9 +99,9 @@ const Accordion = ({ experience, activeTab, onClick, position, isOpen }) => {
           <CompanyLogo src={companyLogo} />
           <Designation>
             {designation}{" "}
-            <span>
+            <TenureDate>
               ({startDate}-{endDate})
-            </span>
+            </TenureDate>
           </Designation>
         </CompanyData>
         <StyledChevron isOpen={isOpen}>
