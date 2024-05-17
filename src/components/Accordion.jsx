@@ -32,10 +32,6 @@ const CompanyLogo = styled.img`
   padding: 0;
   margin: 0;
 `;
-const CompanyName = styled.h2`
-  font-size: larger;
-  grid-column: 2 / 3;
-`;
 
 const Designation = styled.h3`
   grid-column: 3 / 9;
@@ -72,14 +68,14 @@ const AccordionBody = styled.div`
 
 const AccordionContent = styled.div`
   text-align: justify;
-  padding: 1rem;
+  padding: 0 1rem;
   margin: 1rem;
   border-top: 1px solid lightgray;
 `;
 
 const Highlights = styled.ul`
   list-style: none;
-  padding: 1rem 0;
+  padding-top: 1rem;
 `;
 
 const Highlight = styled.li`
