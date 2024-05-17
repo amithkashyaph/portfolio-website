@@ -5,7 +5,12 @@ export const workExperience = [
     designation: "Senior Software Engineer",
     startDate: "Aug 2023",
     endDate: "Present",
-    highlights: [],
+    highlights: [
+      "Developed and revamped the login and registration flows by making it more simpler and user friendly resulting in increased registrations by 2.3% globally",
+      "Automated tasks like generating translation strings for different languages on Vimeo app there by improving the developer’s productivity by reducing the manual effort",
+      "Integrated UI components with backend analytics to relay critical data driving the business initiatives",
+      "Developed UI components and widgets on Vimeo homepage for logged in and logged out users enhancing the user experience",
+    ],
   },
   {
     companyName: "PharmEasy",
