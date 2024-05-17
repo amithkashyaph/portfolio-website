@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { useSidenavState } from "../context/SidenavContext";
 
 const StyledHome = styled.div`
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-image: linear-gradient(to top, #000041, #181818);
+  background-image: linear-gradient(to top, #000000, #181818);
   left: 5rem;
 `;
 
@@ -57,7 +58,23 @@ const StyledImage = styled.img`
   height: auto;
 `;
 
+const StyledButton = styled.button`
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  background-color: #deaa86;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  letter-spacing: 1.2px;
+  &:hover {
+    color: white;
+    background-color: #d9874d;
+  }
+`;
+
 const Home = () => {
+  const { toggleSidenav } = useSidenavState();
+
   return (
     <StyledHome>
       <StyledContent>
@@ -71,6 +88,7 @@ const Home = () => {
             predominantly on the backend with some exposure to frontend
             technologies
           </StyledIntroDescription>
+          <StyledButton onClick={toggleSidenav}>Know more</StyledButton>
         </StyledIntro>
         <StyledImage src="IMG_9155.jpg" />
       </StyledContent>
