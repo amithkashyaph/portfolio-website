@@ -5,7 +5,7 @@ import { useSidenavState } from "../context/SidenavContext";
 const StyledSidenav = styled.nav`
   height: 100vh;
   width: 25rem;
-  background-image: linear-gradient(to bottom, black, grey);
+  background-image: linear-gradient(to bottom, black, #323232);
   left: ${(props) => (props.display ? "5rem" : "-20rem")};
   transition: 0.8s;
   transform: translateX(${(props) => (props.display ? "0rem" : "-20rem")});
