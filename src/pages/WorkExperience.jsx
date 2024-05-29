@@ -3,16 +3,22 @@ import styled from "styled-components";
 import { workExperience } from "../data/workExperience";
 import Accordion from "../components/Accordion";
 
+const StyledWorkExperience = styled.section`
+  background-color: black;
+  color: white;
+`;
 const AccordionContainer = styled.div`
   padding: 1rem;
   text-align: center;
   width: 100%;
   margin-left: 5rem;
+  color: white;
 `;
 
 const ExperinceHeader = styled.h1`
   text-align: center;
-  margin: 3rem 0 1rem 5rem;
+  font-size: 2.5rem;
+  margin: 0 0 2rem 5rem;
 `;
 
 const WorkExperience = () => {
@@ -22,7 +28,7 @@ const WorkExperience = () => {
     setActiveTab((prevIndex) => (prevIndex === index ? -1 : index));
   };
   return (
-    <>
+    <StyledWorkExperience>
       <ExperinceHeader>Work Experience</ExperinceHeader>
       <AccordionContainer>
         {workExperience.map((experience, index) => (
@@ -36,7 +42,7 @@ const WorkExperience = () => {
           />
         ))}
       </AccordionContainer>
-    </>
+    </StyledWorkExperience>
   );
 };
 
