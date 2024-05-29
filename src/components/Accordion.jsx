@@ -8,7 +8,7 @@ const StyledAccordion = styled.div`
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 1rem;
-  margin: 1rem auto;
+  margin: 2rem auto;
 `;
 const AccordionHeader = styled.div`
   display: grid;
@@ -75,13 +75,20 @@ const AccordionContent = styled.div`
 `;
 
 const Highlights = styled.ul`
-  list-style: none;
   padding-top: 1rem;
+  &:last-child {
+    border: none;
+  }
+  overflow: auto;
 `;
 
 const Highlight = styled.li`
   letter-spacing: 1.1px;
   margin: 1rem 0;
+  border-bottom: 1px solid lightgray;
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
 const Accordion = ({ experience, activeTab, onClick, position, isOpen }) => {
@@ -118,10 +125,12 @@ const Accordion = ({ experience, activeTab, onClick, position, isOpen }) => {
           <Highlights>
             {highlights.map((highlight, i) => {
               return (
-                <Highlight
-                  key={i}
-                  dangerouslySetInnerHTML={{ __html: highlight }}
-                ></Highlight>
+                <Highlight key={i}>
+                  <p
+                    dangerouslySetInnerHTML={{ __html: highlight }}
+                    style={{ marginBottom: "1rem" }}
+                  ></p>
+                </Highlight>
               );
             })}
           </Highlights>
