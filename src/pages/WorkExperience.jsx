@@ -6,6 +6,7 @@ import Accordion from "../components/Accordion";
 const StyledWorkExperience = styled.section`
   background-color: black;
   color: white;
+  padding-top: 3rem;
 `;
 const AccordionContainer = styled.div`
   padding: 1rem;
